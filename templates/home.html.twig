@@ -1,0 +1,28 @@
+{% extends "@layouts/base.html.twig" %}
+
+{% block body %}
+    <h1>Home Page</h1>
+    <p>Mini Framework</p>
+    <a href="{{ path('login') }}">Login</a>
+    <a href="{{ path('contact') }}">Contact Us</a>
+    <a href="{{ path('sitemap') }}" class="pb-5">sitemap.xml</a>
+
+    <hr>
+
+    <div class="row">
+        {% for i in 0..7 %}
+            {% set slug = random(10) ~ "-" ~ random(10) %}
+            <div class="col-md-3 mb-5">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://via.placeholder.com/286x180" alt="100%x180" style="height: 180px; width: 100%; display: block;" >
+                    <div class="card-body">
+                        <h5 class="card-title">Post {{ i }}</h5>
+                        <p class="card-text">Slug : {{ slug }}</p>
+                        <a href="{{ path('post.view', {slug: slug, id: i}) }}" class="btn btn-primary btn-block">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
